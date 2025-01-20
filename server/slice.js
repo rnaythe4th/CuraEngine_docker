@@ -23,7 +23,7 @@ if (match) {
   filamentUsed = match[1]; // значение в миллиметрах кубических
   console.log("Filament used:", filamentUsed); // Выводим результат
   // Здесь можно отправить данные клиенту
-  return filamentUsed
+  return { materialUsed: filamentUsed }
 } else {
   console.log('Не удалось найти информацию о филаменте.');
 }
