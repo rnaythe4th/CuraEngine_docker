@@ -6,6 +6,13 @@ const path = require("path");
 require("dotenv").config();
 const { dirname } = require("path");
 const appDir = dirname(require.main.filename);
+const cors = require('cors');
+
+
+app.use(cors({
+  origin: 'http://localhost:5173', // allow requests from localhost only
+  methods: ['GET', 'POST'],
+}));
 
 app.use(express.urlencoded({ extended: false, limit: "50mb" }));
 
