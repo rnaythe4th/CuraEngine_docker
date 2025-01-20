@@ -39,18 +39,14 @@ ENV PATH="$PATH:/root/CuraEngine/build/Release"
 
 # create directories for futher use
 WORKDIR /root
-RUN mkdir InputModels \
-    && mkdir OutputGcode \
-    && mkdir PrinterConfig \
+RUN mkdir PrinterConfig \
     && mkdir Downloads
 
-# copy printer configs and example model
-COPY /3D_Models/Sharp_bullet.stl /root/InputModels/
-ADD /PrinterConfigs/definitions/ /root/PrinterConfig
-ADD /PrinterConfigs/extruders/ /root/PrinterConfig
+# copy printer configs
+ADD /PrinterConfig /root/PrinterConfig
+
 # copy node.js server to image
 ADD /server /root/server
-
 # install Node 20
 WORKDIR /root/Downloads
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x -o nodesource_setup.sh
