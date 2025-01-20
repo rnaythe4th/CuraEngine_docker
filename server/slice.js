@@ -3,6 +3,7 @@ const execSync = require("child_process").execSync;
 const { dirname } = require("path");
 const appDir = dirname(require.main.filename);
 const filePath = `${appDir}/uploads`;
+let filamentUsed = 0.0;
 
 const sliceModel = (
   input_file,
@@ -15,7 +16,19 @@ const sliceModel = (
     { encoding: "utf-8" }
   ); // the default is 'buffer'
 
-  console.log("Output was:\n", output);
+  const match = output.match(/Filament \(mm\^3\): (\d+)/);
+
+// Если строка найдена, извлекаем значение
+if (match) {
+  filamentUsed = match[1]; // значение в миллиметрах кубических
+  console.log("Filament used:", filamentUsed); // Выводим результат
+  // Здесь можно отправить данные клиенту
+  return filamentUsed
+} else {
+  console.log('Не удалось найти информацию о филаменте.');
+}
+
+  //console.log("Output was:\n", output);
 };
 
 module.exports = { sliceModel };

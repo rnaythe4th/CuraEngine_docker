@@ -13,6 +13,8 @@ console.log(process.env.NODE_PATH);
 
 const PORT = process.env.PORT || 3000;
 
+const uploadGcode = false;
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, `${appDir}/uploads`);
@@ -30,8 +32,13 @@ app.get("/", (req, res) => {
 
 app.post("/slice", upload.single("uploaded_file"), (req, res) => {
   console.log(req.file);
-  sliceModel(req.file.filename);
-  res.download(`${appDir}/outputs/${req.file.filename.split(".")[0]}.gcode`);
+  const filamentused = sliceModel(req.file.filename);
+  if (uploadGcode) {
+    res.download(`${appDir}/outputs/${req.file.filename.split(".")[0]}.gcode`);
+  } else {
+    res.json(filamentused);
+  }
+  
 });
 
 app.listen(PORT, () => {
