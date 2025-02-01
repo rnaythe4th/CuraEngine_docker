@@ -10,7 +10,7 @@ const cors = require('cors');
 
 
 app.use(cors({
-  origin: 'http://localhost:5173', // allow requests from localhost only
+  origin: '*', // allow requests from localhost only
   methods: ['GET', 'POST'],
 }));
 
