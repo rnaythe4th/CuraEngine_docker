@@ -16,7 +16,7 @@ iOS-клиент и Web-клиент:
 - Отправляет полученную информацию **обратно клиенту**.
 - Позволяет **анализировать вывод терминала** и извлекать конкретные данные (например, объем использованного материала).
 
-Для нарезки используется CLI движка CuraEngine с пресетами для конкретного 3D-принтера. 
+Для нарезки используется CLI движка [CuraEngine](https://github.com/Ultimaker/CuraEngine) с пресетами для конкретного 3D-принтера. 
 
 > ⚠ **Внимание:** CuraEngine собирается из исходного кода, поэтому создание образа займёт некоторое время.
 
@@ -48,7 +48,7 @@ This **Docker container** includes **Ubuntu Linux** and a **Node.js** server tha
 - Sends the processed information **back to the client**.  
 - Allows **terminal output analysis** to retrieve specific data (e.g., material consumption).  
 
-The slicing process is performed using the **CuraEngine CLI**, configured with presets for a specific 3D printer.  
+The slicing process is performed using the [CuraEngine](https://github.com/Ultimaker/CuraEngine) CLI, configured with presets for a specific 3D printer.  
 
 > ⚠ **Note:** CuraEngine is built from source, so the image creation process may take some time.
 
